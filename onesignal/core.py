@@ -17,5 +17,5 @@ class OneSignal:
         return r.json()
 
     def send(self, notification):
-        data = {**notification._get_json(), **{"app_id": self.app_id}}
+        data = {**notification._get_data(), **{"app_id": self.app_id}}
         return self._post("notifications", json=data)
