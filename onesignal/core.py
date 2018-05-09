@@ -1,5 +1,7 @@
 import requests
 
+from .errors import OneSignalAPIError
+
 
 class OneSignal:
     base_api = "https://onesignal.com/api/v1/"
@@ -9,6 +11,7 @@ class OneSignal:
         self.rest_api_key = rest_api_key
 
     def _post(self, endpoint, json):
+        print(json)
         r = requests.post(self.base_api + endpoint,
                           json=json,
                           headers={
@@ -17,5 +20,10 @@ class OneSignal:
         return r.json()
 
     def send(self, notification):
-        data = {**notification._get_data(), **{"app_id": self.app_id}}
+        if isinstance(self.app_id, str):
+            app_id_obj = {"app_id": self.app_id}
+        elif isinstance(self.app_id, list):
+            app_id_obj = {"app_ids": self.app_id}
+
+        data = {**notification.get_data(), **app_id_obj}
         return self._post("notifications", json=data)

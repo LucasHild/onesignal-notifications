@@ -28,8 +28,8 @@ class FilterNotification(Notification):
 
         print(self.filters)
 
-    def _get_data(self):
+    def get_data(self):
         return {
-            "contents": self.contents,
+            **self.get_parent_data,
             "filters": self.filters
         }
