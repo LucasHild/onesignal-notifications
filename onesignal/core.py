@@ -11,12 +11,16 @@ class OneSignal:
         self.rest_api_key = rest_api_key
 
     def _post(self, endpoint, json):
-        print(json)
         r = requests.post(self.base_api + endpoint,
                           json=json,
                           headers={
                               "Authorization": "Basic " + self.rest_api_key
                           })
+
+        if r.status_code != 200:
+            print("Response from OneSignal API", r.json())
+            raise OneSignalAPIError
+
         return r.json()
 
     def send(self, notification):

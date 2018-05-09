@@ -30,6 +30,6 @@ class FilterNotification(Notification):
 
     def get_data(self):
         return {
-            **self.get_parent_data,
+            **self.get_common_data,
             "filters": self.filters
         }

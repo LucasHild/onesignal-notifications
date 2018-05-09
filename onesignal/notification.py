@@ -256,7 +256,7 @@ class Notification:
                 "'{}' has to be a {}".format(
                     variable_string, class_of_variable)
 
-    def get_parent_data(self):
+    def get_common_data(self):
         return {
             **self.content_data,
             **self.email_content_data,

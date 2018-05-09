@@ -1,0 +1,2 @@
+class OneSignalAPIError(BaseException):
+    pass

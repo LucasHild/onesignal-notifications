@@ -16,5 +16,5 @@ class SegmentNotification(Notification):
         return {
             "included_segments": self.included_segments,
             "excluded_segments": self.excluded_segments,
-            **self.get_parent_data()
+            **self.get_common_data()
         }
