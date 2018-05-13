@@ -18,8 +18,7 @@ class OneSignal:
                           })
 
         if r.status_code != 200:
-            print("Response from OneSignal API", r.json())
-            raise OneSignalAPIError
+            raise OneSignalAPIError(r.json())
 
         return r.json()
 
