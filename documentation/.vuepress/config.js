@@ -9,7 +9,8 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'GitHub', link: 'https://github.com/Lanseuo/onesignal-notifications' }
+      { text: 'GitHub', link: 'https://github.com/Lanseuo/onesignal-notifications' },
+      { text: 'PyPi', link: 'https://pypi.org/project/onesignal-notifications/' }
     ],
     sidebar: {
       '/guide/': genSidebarConfig('Guide')
