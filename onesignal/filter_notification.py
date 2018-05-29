@@ -3,8 +3,6 @@ from .filter import Filter
 
 
 class FilterNotification(Notification):
-    ALL = "All"
-
     def __init__(self,
                  contents,
                  filters):

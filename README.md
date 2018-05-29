@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 [![PyPI](https://img.shields.io/pypi/v/onesignal-notifications.svg?style=flat-square&colorB=dfb317)](https://pypi.org/project/onesignal-notifications/)
 
-OneSignal-Notifications is a wrapper for the OneSignal API which allows you to send notifications for Android, iOS and Web App.
+OneSignal-Notifications is a wrapper for the OneSignal API which allows you to send notifications to Android, iOS and Web App.
 
 ## Installation
 
@@ -23,6 +23,7 @@ notification_to_all_users = SegmentNotification(
     },
     included_segments=SegmentNotification.ALL
 )
+client.send(notification_to_all_users)
 ```
 
 ## Meta

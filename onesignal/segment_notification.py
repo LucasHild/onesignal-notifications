@@ -3,6 +3,9 @@ from .notification import Notification
 
 class SegmentNotification(Notification):
     ALL = "All"
+    ACTIVE_USERS = "Active Users"
+    ENGAGED_USERS = "Engaged Users"
+    INACTIVE_USERS = "Inactive Users"
 
     def __init__(self,
                  included_segments=None,
