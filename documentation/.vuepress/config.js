@@ -2,7 +2,7 @@ module.exports = {
   title: 'OneSignal-Notifications',
   description: 'OneSignal SDK for Python',
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
-  base: '/onesignal-notifications',
+  base: '/onesignal-notifications/',
   dest: './../docs',
 
   themeConfig: {
