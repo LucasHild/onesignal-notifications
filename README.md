@@ -3,6 +3,7 @@
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 [![PyPI](https://img.shields.io/pypi/v/onesignal-notifications.svg?style=flat-square&colorB=dfb317)](https://pypi.org/project/onesignal-notifications/)
 [![Docs](https://img.shields.io/badge/docs-VuePress-red.svg?style=flat-square)](https://lanseuo.github.io/onesignal-notifications/)
+[![Travis CI](https://img.shields.io/travis/Lanseuo/onesignal-notifications.svg?style=flat-square)](https://travis-ci.org/Lanseuo/onesignal-notifications)
 
 OneSignal-Notifications is a wrapper for the OneSignal API which allows you to send notifications to Android, iOS and Web App.
 
