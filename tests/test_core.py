@@ -1,7 +1,11 @@
 import onesignal
+import os
 
 # Put your own credentials here
-client = onesignal.OneSignal("", "")
+client = onesignal.OneSignal(
+    os.environ["ONESIGNAL_API_KEY"],
+    os.environ["ONESIGNAL_REST_API_KEY"]
+)
 
 
 def test_initialize():
