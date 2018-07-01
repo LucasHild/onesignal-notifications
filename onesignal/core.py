@@ -39,7 +39,15 @@ class OneSignal:
         return response
 
     def cancel(self, notification):
+        if isinstance(notification, str):
+            notification_id = notification
+        else:
+            if not notification.id:
+                raise ValueError("The notification was propably not sent yet")
+            notification_id = notification.id
+
         response = self.request(
             "delete",
-            "notifications/" + notification.id + "?app_id=" + self.app_id)
-        print(response)
+            "notifications/" + notification_id + "?app_id=" + self.app_id)
+
+        return response
