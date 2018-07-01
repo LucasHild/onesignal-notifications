@@ -10,12 +10,15 @@ class OneSignal:
         self.app_id = app_id
         self.rest_api_key = rest_api_key
 
-    def _post(self, endpoint, json):
-        r = requests.post(self.base_api + endpoint,
-                          json=json,
-                          headers={
-                              "Authorization": "Basic " + self.rest_api_key
-                          })
+    def request(self, method, endpoint, json={}):
+        r = requests.request(
+            method,
+            self.base_api + endpoint,
+            json=json,
+            headers={
+                "Authorization": "Basic " + self.rest_api_key
+            }
+        )
 
         if r.status_code != 200:
             raise OneSignalAPIError(r.json())
@@ -29,4 +32,14 @@ class OneSignal:
             app_id_obj = {"app_ids": self.app_id}
 
         data = {**notification.get_data(), **app_id_obj}
-        return self._post("notifications", json=data)
+        response = self.request("post", "notifications", json=data)
+
+        notification.id = response["id"]
+
+        return response
+
+    def cancel(self, notification):
+        response = self.request(
+            "delete",
+            "notifications/" + notification.id + "?app_id=" + self.app_id)
+        print(response)

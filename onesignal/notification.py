@@ -77,6 +77,8 @@ class Notification:
                  is_adm=None,
                  is_chrome=None):
 
+        self.id = None
+
         self.check_type(contents, "contents", dict)
         self.check_type(headings, "headings", dict)
         self.check_type(subtitle, "subtitle", dict)
