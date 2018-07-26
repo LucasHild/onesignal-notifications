@@ -27,6 +27,7 @@ function genSidebarConfig(title) {
                 '',
                 'send-notification',
                 'cancel-notifications',
+                'details-notification',
                 'segment-notification',
                 'filter-notification',
                 'device-notification',
