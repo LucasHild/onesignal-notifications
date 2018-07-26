@@ -28,6 +28,38 @@ notification_to_all_users = SegmentNotification(
 client.send(notification_to_all_users)
 ```
 
+## Development
+
+> Contributions are welcome
+
+```
+pip install --editable .
+```
+
+run the tests
+
+```
+pytest
+```
+
+### Docs
+
+To edit the docs, change the folder and spin up the development server.
+
+```
+cd documentation
+npm install -g vuepress
+vuepress dev
+```
+
+When you finished editing the docs, build the files.
+
+```
+vuepress build
+```
+
+Don't forget to add the folder `docs` to git.
+
 ## Meta
 
 Lucas Hild - [https://lucas-hild.de](https://lucas.hild.de)  
