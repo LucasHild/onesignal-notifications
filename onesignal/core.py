@@ -48,6 +48,35 @@ class OneSignal:
 
         response = self.request(
             "delete",
-            "notifications/" + notification_id + "?app_id=" + self.app_id)
+            "notifications/" + notification_id + "?app_id=" + self.app_id
+        )
 
         return response
+
+    def details(self, notification):
+        if isinstance(notification, str):
+            notification_id = notification
+        else:
+            if not notification.id:
+                raise ValueError("The notification was propably not sent yet")
+            notification_id = notification.id
+
+        response = self.request(
+            "get",
+            "notifications/" + notification_id + "?app_id=" + self.app_id
+        )
+
+        result = {}
+        for key in response.keys():
+            result[self.to_underscore(key)] = response[key]
+
+        return result
+
+    def to_underscore(self, var):
+        result = ""
+        for letter in var:
+            if letter == letter.lower():
+                result += letter
+            else:
+                result += "_" + letter.lower()
+        return result
