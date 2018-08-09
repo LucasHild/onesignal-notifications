@@ -1,8 +1,78 @@
 import datetime
 import re
 
+common_notification_paramenters = """contents
+headings
+subtitle
+template_id
+content_available
+mutable_content
+email_body
+email_subject
+email_from_name
+email_from_address
+data
+url
+ios_attachments
+big_picture
+adm_big_picture
+chrome_big_picture
+buttons
+web_buttons
+ios_category
+android_channel_id
+existing_android_channel_id
+android_background_layout
+small_icon
+large_icon
+adm_small_icon
+adm_large_icon
+chrome_web_icon
+chrome_web_image
+chrome_web_badge
+firefox_icon
+chrome_icon
+ios_sound
+android_sound
+adm_sound
+wp_sound
+wp_wns_sound
+android_led_color
+android_accent_color
+android_visibility
+ios_badge_type
+ios_badge_count
+collapse_id
+apns_alert
+send_after
+delayed_option
+delivery_time_of_day
+ttl
+priority
+android_group
+android_group_message
+adm_group
+adm_group_message
+is_ios
+is_android
+is_any_web
+is_email
+is_chrome_web
+is_firefox
+is_safari
+is_wp
+is_wp_wns
+is_adm
+is_chrome"""
+
 
 class Notification:
+    f"""Base notification
+
+    Attributes:
+        {common_notification_paramenters}
+    """
+
     ANDROID_VISIBILITY_PUBLIC = 1
     ANDROID_VISIBILITY_PRIVATE = 0
     ANDROID_VISIBILITY_SECRET = -1
@@ -87,8 +157,8 @@ class Notification:
         self.check_type(mutable_content, "mutable_content", bool)
 
         assert contents or content_available is True or template_id, \
-            "'contents' is required unless content_available=True " \
-            "or template_id is set"
+            ("'contents' is required unless content_available=True "
+             "or template_id is set")
 
         self.content_data = {
             "contents": contents,

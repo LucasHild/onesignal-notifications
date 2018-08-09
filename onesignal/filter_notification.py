@@ -1,12 +1,17 @@
-from .notification import Notification
+from .notification import Notification, common_notification_paramenters
 from .filter import Filter
 
 
 class FilterNotification(Notification):
-    def __init__(self,
-                 contents,
-                 filters):
-        self.contents = contents
+    f"""Notification based on specific filters
+
+    Attributes:
+        filters
+        {common_notification_paramenters}
+    """
+
+    def __init__(self, filters, **kwargs):
+        super().__init__(**kwargs)
         self.filters = []
 
         next_operator = None

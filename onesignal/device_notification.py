@@ -1,7 +1,22 @@
-from .notification import Notification
+from .notification import Notification, common_notification_paramenters
 
 
 class DeviceNotification(Notification):
+    f"""Notification to a specific device using their id
+
+    Attributes:
+        include_player_ids
+        include_email_tokens
+        include_ios_tokens
+        include_wp_urls
+        include_wp_wns_uris
+        include_amazon_reg_ids
+        include_chrome_reg_ids
+        include_chrome_web_reg_ids
+        include_android_reg_ids
+        {common_notification_paramenters}
+    """
+
     def __init__(self,
                  include_player_ids=None,
                  include_email_tokens=None,

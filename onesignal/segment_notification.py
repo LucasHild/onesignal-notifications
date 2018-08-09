@@ -1,7 +1,15 @@
-from .notification import Notification
+from .notification import Notification, common_notification_paramenters
 
 
 class SegmentNotification(Notification):
+    f"""Notification based on specific filters
+
+    Attributes:
+        included_segment
+        excluded_segments
+        {common_notification_paramenters}
+    """
+
     ALL = "All"
     ACTIVE_USERS = "Active Users"
     ENGAGED_USERS = "Engaged Users"

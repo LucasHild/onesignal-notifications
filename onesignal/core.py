@@ -4,13 +4,37 @@ from .errors import OneSignalAPIError
 
 
 class OneSignal:
+    """Connects all the functions and methods to the OneSignal API
+
+    Central class that is used to interact with the OneSignal API
+    by passing notification classes into the methods.
+
+    Attributes:
+        app_id: OneSignal app id
+        rest_api_key: secret OneSignal rest api key
+    """
     base_api = "https://onesignal.com/api/v1/"
 
     def __init__(self, app_id, rest_api_key):
+        """Inits OneSignal with connection details"""
         self.app_id = app_id
         self.rest_api_key = rest_api_key
 
     def request(self, method, endpoint, json={}):
+        """Sends a request to the OneSignal API
+
+        Args:
+            method: HTTP request method
+            endpoint: api endpoint
+            json: request data
+
+        Returns:
+            A dict of the api response
+
+        Raises:
+            OneSignalAPIError: OneSignal API request was not successful
+        """
+
         r = requests.request(
             method,
             self.base_api + endpoint,
@@ -26,6 +50,15 @@ class OneSignal:
         return r.json()
 
     def send(self, notification):
+        """Send a notification
+
+        Attributes:
+            notification: instance of a *Notification class
+
+        Returns:
+            A dict of the API response
+        """
+
         if isinstance(self.app_id, str):
             app_id_obj = {"app_id": self.app_id}
         elif isinstance(self.app_id, list):
@@ -39,6 +72,15 @@ class OneSignal:
         return response
 
     def cancel(self, notification):
+        """Cancel a notification
+
+        Attributes:
+            notification: instance of a *Notification class or notification id
+
+        Returns:
+            A dict of the API response
+        """
+
         if isinstance(notification, str):
             notification_id = notification
         else:
@@ -54,6 +96,16 @@ class OneSignal:
         return response
 
     def details(self, notification):
+        """Get details about a notification
+
+        Attributes:
+            notification: instance of a *Notification class or notification id
+
+        Returns:
+            A dict of the API response
+
+        """
+
         if isinstance(notification, str):
             notification_id = notification
         else:
@@ -73,6 +125,12 @@ class OneSignal:
         return result
 
     def to_underscore(self, var):
+        """Converts camelCase to underscore
+
+        Attributes:
+            var: name of variable in camelCase
+        """
+
         result = ""
         for letter in var:
             if letter == letter.lower():
