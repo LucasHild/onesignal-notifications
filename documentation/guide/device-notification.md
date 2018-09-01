@@ -9,7 +9,7 @@ from onesignal import OneSignal, DeviceNotification
 
 client = OneSignal("MY_APP_ID", "MY_REST_API_KEY")
 notification_to_users = DeviceNotification(
-    {
+    contents={
         "en": "Hello from OneSignal-Notifications"
     },
     included_player_ids=["1dd608f2-c6a1-11e3-851d-000c2940e62c", "5ha618p8-c6a1-12x7-891z-000d1230ee51"]

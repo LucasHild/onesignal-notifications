@@ -3,7 +3,7 @@
 There are different types of notifications:
 
 - You can send a [`SegmentNotification`](segment-notification.html) to a specific segment of users. For example to all users.
-- You can send a [`FilterNotification`](filter-notification.html) based on filters. For  example only users who have a specific version of the app.
+- You can send a [`FilterNotification`](filter-notification.html) based on filters. For example only users who have a specific version of the app.
 - You can send a [`DeviceNotification`](device-notification.html) to specific devices using their id.
 
 Let's send a notification to all users. If the users clicks on the notification, GitHub opens.
@@ -13,7 +13,7 @@ from onesignal import OneSignal, SegmentNotification
 
 client = OneSignal("MY_APP_ID", "MY_REST_API_KEY")
 notification_to_all_users = SegmentNotification(
-    {
+    contents={
         "en": "Hello from OneSignal-Notifications"
     },
     included_segments=SegmentNotification.ALL,

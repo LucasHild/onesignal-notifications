@@ -1,4 +1,4 @@
-# OneSignal SDK for Python 
+# OneSignal SDK for Python
 
 ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 [![PyPI](https://img.shields.io/pypi/v/onesignal-notifications.svg?style=flat-square&colorB=dfb317)](https://pypi.org/project/onesignal-notifications/)
@@ -18,7 +18,7 @@ from onesignal import OneSignal, SegmentNotification
 
 client = OneSignal("MY_APP_ID", "MY_REST_API_KEY")
 notification_to_all_users = SegmentNotification(
-    {
+    contents={
         "en": "Hello from OneSignal-Notifications"
     },
     included_segments=SegmentNotification.ALL

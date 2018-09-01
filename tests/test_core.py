@@ -14,16 +14,16 @@ def test_initialize():
 
 def test_send():
     notification = onesignal.SegmentNotification(
-        included_segments=onesignal.SegmentNotification.ALL,
-        contents={"en": "Hello World"}
+        contents={"en": "Hello World"},
+        included_segments=[onesignal.SegmentNotification.ALL]
     )
     assert client.send(notification)
 
 
 def test_cancel():
     notification = onesignal.SegmentNotification(
-        included_segments=onesignal.SegmentNotification.ALL,
-        contents={"en": "Hello World"}
+        contents={"en": "Hello World"},
+        included_segments=[onesignal.SegmentNotification.ALL]
     )
 
     try:
@@ -41,8 +41,8 @@ def test_cancel():
 
 def test_details():
     notification = onesignal.SegmentNotification(
-        included_segments=onesignal.SegmentNotification.ALL,
-        contents={"en": "Hello World"}
+        contents={"en": "Hello World"},
+        included_segments=onesignal.SegmentNotification.ALL
     )
     client.send(notification)
     details = client.details(notification)

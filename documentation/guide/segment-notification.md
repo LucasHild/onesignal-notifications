@@ -9,7 +9,7 @@ from onesignal import OneSignal, SegmentNotification
 
 client = OneSignal("MY_APP_ID", "MY_REST_API_KEY")
 notification_to_all_active_users = SegmentNotification(
-    {
+    contents={
         "en": "Hello from OneSignal-Notifications"
     },
     included_segments=SegmentNotification.ACTIVE_USERS,

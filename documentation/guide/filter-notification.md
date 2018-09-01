@@ -9,7 +9,7 @@ from onesignal import OneSignal, FilterNotification
 
 client = OneSignal("MY_APP_ID", "MY_REST_API_KEY")
 filter_notification = FilterNotification(
-    {
+    contents={
         "en": "Hello from OneSignal-Notifications"
     },
     filters=[
