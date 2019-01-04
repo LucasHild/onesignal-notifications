@@ -72,7 +72,7 @@ class Notification:
 
     Attributes:
         {common_notification_paramenters}
-    """
+    """.format(common_notification_paramenters=common_notification_paramenters)
 
     ANDROID_VISIBILITY_PUBLIC = 1
     ANDROID_VISIBILITY_PRIVATE = 0

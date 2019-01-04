@@ -1,6 +1,7 @@
 from .notification import Notification, common_notification_paramenters
 from itertools import chain
 
+
 class SegmentNotification(Notification):
     """Notification based on specific filters
 
@@ -8,7 +9,7 @@ class SegmentNotification(Notification):
         included_segment
         excluded_segments
         {common_notification_paramenters}
-    """
+    """.format(common_notification_paramenters=common_notification_paramenters)
 
     ALL = "All"
     ACTIVE_USERS = "Active Users"

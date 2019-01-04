@@ -2,13 +2,14 @@ from .notification import Notification, common_notification_paramenters
 from .filter import Filter
 from itertools import chain
 
+
 class FilterNotification(Notification):
     """Notification based on specific filters
 
     Attributes:
         filters
         {common_notification_paramenters}
-    """
+    """.format(common_notification_paramenters=common_notification_paramenters)
 
     def __init__(self, filters, **kwargs):
         Notification.__init__(self, **kwargs)
@@ -22,10 +23,10 @@ class FilterNotification(Notification):
                 else:
                     self.filters.append(
                         dict(chain(
-                        filter.data.items(),
-                        {"operator": next_operator}.items()))
+                            filter.data.items(),
+                            {"operator": next_operator}.items()))
                     )
- 
+
                     next_operator = None
 
             elif isinstance(filter, str):
