@@ -1,8 +1,8 @@
 from .notification import Notification, common_notification_paramenters
-
+from itertools import chain
 
 class SegmentNotification(Notification):
-    f"""Notification based on specific filters
+    """Notification based on specific filters
 
     Attributes:
         included_segment
@@ -19,13 +19,12 @@ class SegmentNotification(Notification):
                  included_segments=None,
                  excluded_segments=None,
                  **kwargs):
-        super().__init__(**kwargs)
+        Notification.__init__(self, **kwargs)
         self.included_segments = included_segments
         self.excluded_segments = excluded_segments
 
     def get_data(self):
-        return {
+        return dict(chain({
             "included_segments": self.included_segments,
-            "excluded_segments": self.excluded_segments,
-            **self.get_common_data()
-        }
+            "excluded_segments": self.excluded_segments
+        }.items(), self.get_common_data().items()))

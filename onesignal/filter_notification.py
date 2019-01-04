@@ -1,9 +1,9 @@
 from .notification import Notification, common_notification_paramenters
 from .filter import Filter
-
+from itertools import chain
 
 class FilterNotification(Notification):
-    f"""Notification based on specific filters
+    """Notification based on specific filters
 
     Attributes:
         filters
@@ -11,7 +11,7 @@ class FilterNotification(Notification):
     """
 
     def __init__(self, filters, **kwargs):
-        super().__init__(**kwargs)
+        Notification.__init__(self, **kwargs)
         self.filters = []
 
         next_operator = None
@@ -20,10 +20,12 @@ class FilterNotification(Notification):
                 if not next_operator:
                     self.filters.append(filter.data)
                 else:
-                    self.filters.append({
-                        **filter.data,
-                        **{"operator": next_operator}
-                    })
+                    self.filters.append(
+                        dict(chain(
+                        filter.data.items(),
+                        {"operator": next_operator}.items()))
+                    )
+ 
                     next_operator = None
 
             elif isinstance(filter, str):
@@ -32,7 +34,7 @@ class FilterNotification(Notification):
         print(self.filters)
 
     def get_data(self):
-        return {
-            **self.get_common_data,
-            "filters": self.filters
-        }
+        return dict(chain(
+            self.get_common_data.items(),
+            {"filters": self.filters}.items()
+        ))
