@@ -1,8 +1,8 @@
 from .notification import Notification, common_notification_paramenters
-
+from itertools import chain
 
 class DeviceNotification(Notification):
-    f"""Notification to a specific device using their id
+    """Notification to a specific device using their id
 
     Attributes:
         include_player_ids
@@ -28,7 +28,7 @@ class DeviceNotification(Notification):
                  include_chrome_web_reg_ids=None,
                  include_android_reg_ids=None,
                  **kwargs):
-        super().__init__(**kwargs)
+        Notification.__init__(self, **kwargs)
         self.include_player_ids = include_player_ids
         self.include_email_tokens = include_email_tokens
         self.include_ios_tokens = include_ios_tokens
@@ -40,7 +40,7 @@ class DeviceNotification(Notification):
         self.include_android_reg_ids = include_android_reg_ids
 
     def get_data(self):
-        return {
+        return dict(chain({
             "include_player_ids": self.include_player_ids,
             "include_email_tokens": self.include_email_tokens,
             "include_ios_tokens": self.include_ios_tokens,
@@ -50,5 +50,7 @@ class DeviceNotification(Notification):
             "include_chrome_reg_ids": self.include_chrome_reg_ids,
             "include_chrome_web_reg_ids": self.include_chrome_web_reg_ids,
             "include_android_reg_ids": self.include_android_reg_ids,
-            **self.get_common_data()
-        }
+            }.items(),
+            self.get_common_data().items()
+        ))
+
