@@ -1,6 +1,7 @@
 import datetime
 import re
-from itertools import chain
+
+from .utils import merge_dicts
 
 common_notification_paramenters = """contents
 headings
@@ -330,13 +331,13 @@ class Notification:
                     variable_string, class_of_variable)
 
     def get_common_data(self):
-        return dict(chain(
-            self.content_data.items(),
-            self.email_content_data.items(),
-            self.attachments_data.items(),
-            self.action_buttons_data.items(),
-            self.appearance_data.items(),
-            self.delivery_data.items(),
-            self.grouping_and_collapsing_data.items(),
-            self.platform_to_deliver_to_data.items(),
-        ))
+        return merge_dicts(
+            self.content_data,
+            self.email_content_data,
+            self.attachments_data,
+            self.action_buttons_data,
+            self.appearance_data,
+            self.delivery_data,
+            self.grouping_and_collapsing_data,
+            self.platform_to_deliver_to_data
+        )

@@ -1,7 +1,7 @@
 import requests
-from itertools import chain
 
 from .errors import OneSignalAPIError
+from .utils import merge_dicts
 
 
 class OneSignal:
@@ -65,10 +65,10 @@ class OneSignal:
         elif isinstance(self.app_id, list):
             app_id_obj = {"app_ids": self.app_id}
 
-        data = dict(chain(
-            notification.get_data().items(),
-            app_id_obj.items()
-        ))
+        data = merge_dicts(
+            notification.get_data(),
+            app_id_obj
+        )
 
         response = self.request("post", "notifications", json=data)
 
@@ -108,7 +108,6 @@ class OneSignal:
 
         Returns:
             A dict of the API response
-
         """
 
         if isinstance(notification, str):

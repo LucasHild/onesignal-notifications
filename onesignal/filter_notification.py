@@ -1,6 +1,6 @@
 from .notification import Notification, common_notification_paramenters
 from .filter import Filter
-from itertools import chain
+from .utils import merge_dicts
 
 
 class FilterNotification(Notification):
@@ -20,11 +20,13 @@ class FilterNotification(Notification):
             if isinstance(filter, Filter):
                 if not next_operator:
                     self.filters.append(filter.data)
+
                 else:
                     self.filters.append(
-                        dict(chain(
-                            filter.data.items(),
-                            {"operator": next_operator}.items()))
+                        merge_dicts(
+                            filter.data,
+                            {"operator": next_operator}
+                        )
                     )
 
                     next_operator = None
@@ -32,10 +34,8 @@ class FilterNotification(Notification):
             elif isinstance(filter, str):
                 next_operator = filter
 
-        print(self.filters)
-
     def get_data(self):
-        return dict(chain(
-            self.get_common_data.items(),
-            {"filters": self.filters}.items()
-        ))
+        return merge_dicts(
+            self.get_common_data(),
+            {"filters": self.filters}
+        )
