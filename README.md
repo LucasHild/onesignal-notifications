@@ -39,6 +39,9 @@ pip install --editable .
 run the tests
 
 ```
+export ONESIGNAL_API_KEY="..."
+export ONESIGNAL_REST_API_KEY="..."
+
 pytest
 ```
 

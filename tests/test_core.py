@@ -1,18 +1,11 @@
 import onesignal
-import os
-
-# Put your own credentials here
-client = onesignal.OneSignal(
-    os.environ["ONESIGNAL_API_KEY"],
-    os.environ["ONESIGNAL_REST_API_KEY"]
-)
 
 
-def test_initialize():
+def test_initialize(client):
     assert isinstance(client, onesignal.OneSignal)
 
 
-def test_send():
+def test_send(client):
     notification = onesignal.SegmentNotification(
         contents={"en": "Hello World"},
         included_segments=[onesignal.SegmentNotification.ALL]
@@ -20,7 +13,7 @@ def test_send():
     assert client.send(notification)
 
 
-def test_cancel():
+def test_cancel(client):
     notification = onesignal.SegmentNotification(
         contents={"en": "Hello World"},
         included_segments=[onesignal.SegmentNotification.ALL]
@@ -28,10 +21,7 @@ def test_cancel():
 
     try:
         client.cancel(notification)
-        assert False, (
-            "Notification was not sent yet, "
-            "but was on it's way to be canceled"
-        )
+        assert False, "Notification was not sent yet, but was on it's way to be canceled"
     except ValueError:
         pass
 
@@ -39,7 +29,7 @@ def test_cancel():
     assert client.cancel(notification)
 
 
-def test_details():
+def test_details(client):
     notification = onesignal.SegmentNotification(
         contents={"en": "Hello World"},
         included_segments=onesignal.SegmentNotification.ALL
