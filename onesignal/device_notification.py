@@ -15,6 +15,7 @@ class DeviceNotification(Notification):
         include_chrome_reg_ids
         include_chrome_web_reg_ids
         include_android_reg_ids
+        include_external_user_ids
         {common_notification_paramenters}
     """.format(common_notification_paramenters=common_notification_paramenters)
 
@@ -28,6 +29,7 @@ class DeviceNotification(Notification):
                  include_chrome_reg_ids=None,
                  include_chrome_web_reg_ids=None,
                  include_android_reg_ids=None,
+                 include_external_user_ids=None,
                  **kwargs):
         Notification.__init__(self, **kwargs)
         self.include_player_ids = include_player_ids
@@ -39,6 +41,7 @@ class DeviceNotification(Notification):
         self.include_chrome_reg_ids = include_chrome_reg_ids
         self.include_chrome_web_reg_ids = include_chrome_web_reg_ids
         self.include_android_reg_ids = include_android_reg_ids
+        self.include_external_user_ids = include_external_user_ids
 
     def get_data(self):
         return merge_dicts(
@@ -52,6 +55,7 @@ class DeviceNotification(Notification):
                 "include_amazon_reg_ids": self.include_amazon_reg_ids,
                 "include_chrome_reg_ids": self.include_chrome_reg_ids,
                 "include_chrome_web_reg_ids": self.include_chrome_web_reg_ids,
-                "include_android_reg_ids": self.include_android_reg_ids
+                "include_android_reg_ids": self.include_android_reg_ids,
+                "include_external_user_ids": self.include_external_user_ids
             }
         )
