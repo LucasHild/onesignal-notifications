@@ -28,5 +28,6 @@ client.send(notification_to_users)
 - include_chrome_reg_ids
 - include_chrome_web_reg_ids
 - include_android_reg_ids
+- include_external_user_ids
 
 [More details](https://documentation.onesignal.com/reference#section-send-to-specific-devices)
