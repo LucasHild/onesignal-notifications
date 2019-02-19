@@ -50,20 +50,12 @@ pytest
 To edit the docs, change the folder and spin up the development server.
 
 ```
-cd documentation
+cd docs
 npm install -g vuepress
 vuepress dev
 ```
 
-When you finished editing the docs, build the files.
-
-```
-vuepress build
-```
-
-Don't forget to add the folder `docs` to git.
-
 ## Meta
 
-Lucas Hild - [https://lucas-hild.de](https://lucas.hild.de)  
+Lucas Hild - [https://lucas-hild.de](https://lucas-hild.de)  
 This project is licensed under the MIT License - see the LICENSE file for details
