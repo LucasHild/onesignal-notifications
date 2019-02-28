@@ -3,7 +3,7 @@ module.exports = {
     description: 'OneSignal SDK for Python',
     head: [['link', { rel: 'icon', href: '/logo.png' }]],
     base: '/onesignal-notifications/',
-    dest: './../docs',
+    dest: './generated-docs',
 
     themeConfig: {
         nav: [
