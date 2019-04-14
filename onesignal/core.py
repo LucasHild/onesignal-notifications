@@ -60,7 +60,7 @@ class OneSignal:
             A dict of the API response
         """
 
-        if isinstance(self.app_id, str):
+        if isinstance(self.app_id, basestring):
             app_id_obj = {"app_id": self.app_id}
         elif isinstance(self.app_id, list):
             app_id_obj = {"app_ids": self.app_id}
