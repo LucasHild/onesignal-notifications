@@ -59,6 +59,7 @@ class OneSignal:
         Returns:
             A dict of the API response
         """
+        # Allow unicode app ID, Python 3 doesn't support basestring
         try:
             basestring
         except NameError:
