@@ -59,8 +59,13 @@ class OneSignal:
         Returns:
             A dict of the API response
         """
+        # Allow unicode app ID, Python 3 doesn't support basestring
+        try:
+            basestring
+        except NameError:
+            basestring = str
 
-        if isinstance(self.app_id, str):
+        if isinstance(self.app_id, basestring):
             app_id_obj = {"app_id": self.app_id}
         elif isinstance(self.app_id, list):
             app_id_obj = {"app_ids": self.app_id}
