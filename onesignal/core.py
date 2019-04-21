@@ -59,6 +59,10 @@ class OneSignal:
         Returns:
             A dict of the API response
         """
+        try:
+            basestring
+        except NameError:
+            basestring = str
 
         if isinstance(self.app_id, basestring):
             app_id_obj = {"app_id": self.app_id}
