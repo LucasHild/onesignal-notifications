@@ -1,7 +1,6 @@
 import datetime
 import re
 
-from .utils import merge_dicts
 
 common_notification_paramenters = """contents
 headings
@@ -322,7 +321,6 @@ class Notification:
         }
 
     def check_type(self, variable, variable_string, type):
-
         class_of_variable = str(type().__class__)[8:-2]
 
         if variable is not None:
@@ -331,13 +329,13 @@ class Notification:
                     variable_string, class_of_variable)
 
     def get_common_data(self):
-        return merge_dicts(
-            self.content_data,
-            self.email_content_data,
-            self.attachments_data,
-            self.action_buttons_data,
-            self.appearance_data,
-            self.delivery_data,
-            self.grouping_and_collapsing_data,
-            self.platform_to_deliver_to_data
-        )
+        return {
+            **self.content_data,
+            **self.email_content_data,
+            **self.attachments_data,
+            **self.action_buttons_data,
+            **self.appearance_data,
+            **self.delivery_data,
+            **self.grouping_and_collapsing_data,
+            **self.platform_to_deliver_to_data
+        }

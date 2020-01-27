@@ -1,5 +1,4 @@
 from .notification import Notification, common_notification_paramenters
-from .utils import merge_dicts
 
 
 class DeviceNotification(Notification):
@@ -44,18 +43,16 @@ class DeviceNotification(Notification):
         self.include_external_user_ids = include_external_user_ids
 
     def get_data(self):
-        return merge_dicts(
-            self.get_common_data(),
-            {
-                "include_player_ids": self.include_player_ids,
-                "include_email_tokens": self.include_email_tokens,
-                "include_ios_tokens": self.include_ios_tokens,
-                "include_wp_urls": self.include_wp_urls,
-                "include_wp_wns_uris": self.include_wp_wns_uris,
-                "include_amazon_reg_ids": self.include_amazon_reg_ids,
-                "include_chrome_reg_ids": self.include_chrome_reg_ids,
-                "include_chrome_web_reg_ids": self.include_chrome_web_reg_ids,
-                "include_android_reg_ids": self.include_android_reg_ids,
-                "include_external_user_ids": self.include_external_user_ids
-            }
-        )
+        return {
+            **self.get_common_data(),
+            "include_player_ids": self.include_player_ids,
+            "include_email_tokens": self.include_email_tokens,
+            "include_ios_tokens": self.include_ios_tokens,
+            "include_wp_urls": self.include_wp_urls,
+            "include_wp_wns_uris": self.include_wp_wns_uris,
+            "include_amazon_reg_ids": self.include_amazon_reg_ids,
+            "include_chrome_reg_ids": self.include_chrome_reg_ids,
+            "include_chrome_web_reg_ids": self.include_chrome_web_reg_ids,
+            "include_android_reg_ids": self.include_android_reg_ids,
+            "include_external_user_ids": self.include_external_user_ids
+        }

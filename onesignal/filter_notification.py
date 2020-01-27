@@ -1,6 +1,4 @@
 from .notification import Notification, common_notification_paramenters
-from .filter import Filter
-from .utils import merge_dicts
 
 
 class FilterNotification(Notification):
@@ -26,7 +24,7 @@ class FilterNotification(Notification):
                 self.filters.append(filter.data)
 
     def get_data(self):
-        return merge_dicts(
-            self.get_common_data(),
-            {"filters": self.filters}
-        )
+        return {
+            **self.get_common_data(),
+            "filters": self.filters
+        }
