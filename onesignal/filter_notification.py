@@ -15,24 +15,15 @@ class FilterNotification(Notification):
         Notification.__init__(self, **kwargs)
         self.filters = []
 
-        next_operator = None
-        for index, filter in enumerate(filters):
-            if isinstance(filter, Filter):
-                if not next_operator:
-                    self.filters.append(filter.data)
+        for filter in filters:
+            if filter == "OR":
+                self.filters.append({"operator": "OR"})
 
-                else:
-                    self.filters.append(
-                        merge_dicts(
-                            filter.data,
-                            {"operator": next_operator}
-                        )
-                    )
+            elif filter == "AND":
+                continue
 
-                    next_operator = None
-
-            elif isinstance(filter, str):
-                next_operator = filter
+            else:
+                self.filters.append(filter.data)
 
     def get_data(self):
         return merge_dicts(
