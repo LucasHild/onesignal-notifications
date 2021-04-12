@@ -14,6 +14,8 @@ email_from_name
 email_from_address
 data
 url
+web_url
+app_url
 ios_attachments
 big_picture
 adm_big_picture
@@ -96,6 +98,8 @@ class Notification:
                  email_from_address=None,
                  data=None,
                  url=None,
+                 web_url=None,
+                 app_url=None,
                  ios_attachments=None,
                  big_picture=None,
                  adm_big_picture=None,
@@ -190,6 +194,8 @@ class Notification:
 
         self.check_type(data, "data", dict)
         self.check_type(url, "url", str)
+        self.check_type(web_url, "web_url", str)
+        self.check_type(app_url, "app_url", str)
         self.check_type(ios_attachments, "ios_attachments", dict)
         self.check_type(big_picture, "big_picture", str)
         self.check_type(adm_big_picture, "data", str)
@@ -198,6 +204,8 @@ class Notification:
         self.attachments_data = {
             "data": data,
             "url": url,
+            "web_url": web_url,
+            "app_url": app_url,
             "ios_attachments": ios_attachments,
             "big_picture": big_picture,
             "adm_big_picture": adm_big_picture,
