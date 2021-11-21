@@ -42,9 +42,8 @@ class DeviceNotification(Notification):
         self.include_android_reg_ids = include_android_reg_ids
         self.include_external_user_ids = include_external_user_ids
 
-    def get_data(self):
+    def get_instance_data(self):
         return {
-            **self.get_common_data(),
             "include_player_ids": self.include_player_ids,
             "include_email_tokens": self.include_email_tokens,
             "include_ios_tokens": self.include_ios_tokens,
