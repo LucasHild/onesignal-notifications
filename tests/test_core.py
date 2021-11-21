@@ -32,7 +32,7 @@ def test_cancel(client):
 def test_details(client):
     notification = onesignal.SegmentNotification(
         contents={"en": "Hello World"},
-        included_segments=onesignal.SegmentNotification.ALL
+        included_segments=[onesignal.SegmentNotification.ALL]
     )
     client.send(notification)
     details = client.details(notification)
