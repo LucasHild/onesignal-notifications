@@ -23,8 +23,5 @@ class FilterNotification(Notification):
             else:
                 self.filters.append(filter.data)
 
-    def get_data(self):
-        return {
-            **self.get_common_data(),
-            "filters": self.filters
-        }
+    def get_instance_data(self):
+        return {"filters": self.filters}

@@ -1,7 +1,8 @@
 import datetime
 import re
+from itertools import chain
 
-
+fields_to_ignore_if_no_set = ["delayed_option"]
 common_notification_paramenters = """contents
 headings
 subtitle
@@ -337,5 +338,22 @@ class Notification:
             **self.appearance_data,
             **self.delivery_data,
             **self.grouping_and_collapsing_data,
-            **self.platform_to_deliver_to_data
+    def get_instance_data(self):
+        raise NotImplementedError(
+            "Method 'get_instance_data' of '{}' needs to be implemented".format(
+                self.__class__.__name__
+            )
+        )
+
+    def get_data(self):
+        data = dict(
+            chain({**self.get_instance_data()}.items(), self.get_common_data().items())
+        )
+
+        data = {
+            key: value
+            for key, value in data.items()
+            if value is not None or key not in fields_to_ignore_if_no_set
         }
+
+        return data
